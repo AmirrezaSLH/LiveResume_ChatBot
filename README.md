@@ -9,6 +9,8 @@ This project is a personal chatbot assistant designed to answer questions about 
 - Web interface for users to submit questions.
 - Flask backend to handle API requests and interact with OpenAI's GPT model.
 - Secure API communication.
+- MySQL database for storing queries and responses.
+- Conversation history-aware for personalized interactions.
 - Live typing effect for responses.
 
 ## Project Structure
