@@ -85,9 +85,8 @@ Ensure you have the following installed:
 
 To ensure proper communication between the frontend and backend, update the server IP in the following locations:
 
-Frontend (index.html): Modify the fetch request URL to match your server's IP address.
-
-Backend (main.py): Configure Flask to run on the appropriate host and port for external access.
+- Frontend (index.html): Modify the fetch request URL to match your server's IP address.
+- Backend (main.py): Configure Flask to run on the appropriate host and port for external access.
 
 ## API Usage
 
