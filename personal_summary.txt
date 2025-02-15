@@ -1,0 +1,33 @@
+# Edit this file to match your profile
+# This is a brief sample of what it should look like. 
+#This text is not accurate and does not represent anything about Amirreza Salehi.
+
+My name is Amirreza Salehi.
+I live in Canada
+You can contact me at my personal email at Example@gexample.com.
+
+Provide a brief overview of your self here.
+
+## Education
+
+During my undergraduate years, I took advanced courses in programming, statistics, optimization, economics, and finance. These subjects played a crucial role in shaping my technical proficiency and analytical capabilities, equipping me with the necessary skills to tackle complex challenges in various fields.
+
+## Professional Experience
+
+### Motivation
+I am driven by continuous learning and the desire to see my projects progress. The impact of my work and the sense of contributing positively to a larger goal keep me engaged and motivated.
+
+## Most Fulfilling Projects
+
+### Time Series Analysis of the U.S. Residential Sector Carbon Emissions | R, RStudio (Sep 2022 – Dec 2022)
+- Developed ARIMA models to forecast U.S. residential sector emissions, achieving a 10% accuracy margin.
+
+## Extracurricular Activities & Leadership
+Beyond academics, I actively engaged in various volunteer activities and leadership roles. 
+
+## Hobbies
+I enjoy discovering new and tasty foods, and I also love cooking. My approach to cooking is like research—I make a single dish as many times as necessary to perfect it before moving on to another. Some of my favorite foods include Persian kabob, Italian-style pizza, and Eastern Asian noodles. However, I strongly dislike seafood.
+
+
+I enjoy city hiking and exploring local places, particularly in historical areas where I can connect with the past through architecture and urban development.
+

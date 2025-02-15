@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amirreza's Live Resume</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 3em;
+            color: #333;
+            margin-top: 5%;
+        }
+        .question-section {
+            margin-top: 2%;
+            text-align: center;
+        }
+        .question-section label {
+            font-size: 1.2em;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .question-section textarea {
+            width: 400px;
+            height: 80px;
+            font-size: 1em;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            margin-bottom: 10px;
+        }
+        .question-section button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .question-section button:hover {
+            background-color: #0056b3;
+        }
+        .response-section {
+            margin-top: 20px;
+            width: 60%;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            color: #333;
+            text-align: left;
+            white-space: pre-line; /* Preserve line breaks */
+            display: none; /* Hide until response is ready */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, I am Amirreza's Personal Assistant</h1>
+    
+    <div class="question-section">
+        <label for="question-box">How can I assist you with Amirreza's professional background?</label>
+        <textarea id="question-box" placeholder="Type your questions here..."></textarea>
+    </div>
+    
+    <div class="question-section">
+        <button type="submit" onclick="sendQuestion()">Submit</button>
+    </div>
+    
+    <div class="response-section" id="response-section"></div>
+	
+	<!-- Visit Tracking Script -->
+    <script>
+      window.onload = function() {
+        fetch("http://chatbot.amirrezaslh.com/count")
+          .then(response => response.json())
+          .then(data => {
+            console.log("Total Visits:", data.total_visits);
+            console.log("Unique Visitors:", data.unique_visitors);
+            console.log("Your IP:", data.your_ip);
+          })
+          .catch(error => console.error("Error:", error));
+      };
+    </script>
+	
+    <script>
+        function sendQuestion() {
+            const userInput = document.getElementById("question-box").value;
+            const responseBox = document.getElementById("response-section");
+
+            // Show loading text
+            responseBox.style.display = "block";
+            responseBox.innerHTML = "<i>Loading response...</i>";
+
+            fetch("http://chatbot.amirrezaslh.com/chatbot", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ input: userInput })
+            })
+            .then(response => response.json())  // Expect JSON response
+            .then(data => {
+                if (data.response) {
+                    responseBox.innerHTML = `<strong>Response:</strong><br>`;
+                    displayWordByWord(data.response, responseBox, 50); // Typing effect with 50ms delay
+                } else {
+                    responseBox.innerHTML = `<strong>Error:</strong> No response received.`;
+                }
+            })
+            .catch(error => {
+                responseBox.innerHTML = `<strong>Error:</strong> ${error}`;
+            });
+        }
+
+        function displayWordByWord(text, element, speed) {
+            const words = text.split(" ");
+            let index = 0;
+            element.innerHTML += "<br>"; // Start new line for response
+
+            function addNextWord() {
+                if (index < words.length) {
+                    element.innerHTML += words[index] + " ";
+                    index++;
+                    setTimeout(addNextWord, speed);
+                }
+            }
+
+            addNextWord();
+        }
+    </script>
+</body>
+</html>
