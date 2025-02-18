@@ -1,6 +1,6 @@
 # Amirreza's Live Resume Chatbot
 
-http://chatbot.amirrezaslh.com/
+http://chatbot.amirrezaslh.com/v?t=ghr
 
 ## Overview
 
