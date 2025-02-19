@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amirreza's Live Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+	:root {
+		--bg-color: #f0f0f0;
+		--wrapper-bg: white;
+		--text-color: #333;
+		--bot-bg: #3399ff; /* Softer blue for a more user-friendly look */
+		--user-bg: #efefef;
+		--icon-bg: #007bff;
+		--button-bg: #007bff;
+		--input-bg: #f9f9f9;
+		--box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.dark-mode {
+		--bg-color: #121212;
+		--wrapper-bg: #1e1e1e;
+		--text-color: #e0e0e0;
+		--bot-bg: #5a9bd5; /* Softer blue for dark mode */
+		--user-bg: #1e88e5;
+		--icon-bg: #5a9bd5;
+		--button-bg: #007bff;
+		--input-bg: #333;
+		--box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Poppins', sans-serif;
+		font-size: 14px; /* Reduced by 2pt */
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		background-color: var(--bg-color);
+		color: var(--text-color);
+	}
+
+	.wrapper {
+		width: 90%;
+		max-width: 600px;
+		background: var(--wrapper-bg);
+		border-radius: 10px;
+		box-shadow: var(--box-shadow);
+		overflow: hidden;
+	}
+
+	.title {
+		background: var(--bot-bg);
+		color: white;
+		text-align: center;
+		font-size: 18px; /* Reduced by 2pt */
+		padding: 15px;
+		font-weight: 600;
+	}
+
+	.box {
+		padding: 15px;
+		max-height: 50vh;
+		overflow-y: auto;
+	}
+
+	.item {
+		display: flex;
+		margin: 10px 0;
+		align-items: center;
+	}
+
+	.item .icon {
+		background: var(--icon-bg);
+		color: white;
+		width: 38px; /* Reduced slightly */
+		height: 38px;
+		text-align: center;
+		line-height: 38px;
+		border-radius: 50%;
+		margin-right: 10px;
+	}
+
+	.item .msg {
+		background: var(--bot-bg);
+		color: white;
+		border-radius: 10px;
+		padding: 8px; /* Reduced by 2pt */
+		max-width: 70%;
+	}
+
+	.item.right {
+		flex-direction: row-reverse;
+	}
+
+	.item.right .msg {
+		background: var(--user-bg);
+		color: var(--text-color);
+	}
+
+	.typing-area {
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+		border-top: 1px solid #ddd;
+		background: var(--input-bg);
+	}
+
+	.typing-area input {
+		flex: 1;
+		padding: 8px; /* Reduced by 2pt */
+		border: none;
+		outline: none;
+		border-radius: 3px;
+		width: 100%;
+		background: var(--input-bg);
+		color: var(--text-color);
+	}
+
+	.typing-area button {
+		margin-top: 10px;
+		padding: 8px 12px; /* Reduced by 2pt */
+		background: var(--button-bg);
+		color: white;
+		border: none;
+		border-radius: 3px;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	/* Dark Mode Toggle Button */
+	#dark-mode-toggle {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		padding: 8px 12px;
+		background: var(--button-bg);
+		color: white;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 12px; /* Reduced by 2pt */
+	}
+
+	#dark-mode-toggle:hover {
+		opacity: 0.8;
+	}
+
+	@media (min-width: 768px) {
+		.wrapper {
+			width: 60%;
+		}
+		.typing-area {
+			flex-direction: row;
+		}
+		.typing-area input {
+			width: auto;
+			flex: 1;
+		}
+		.typing-area button {
+			width: auto;
+			margin-top: 0;
+			margin-left: 10px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.wrapper {
+			width: 80%; /* Increased width to 80% for desktop monitors */
+		}
+	}
+
+	@keyframes flash {
+		0% { opacity: 1; }
+		50% { opacity: 0.5; }
+		100% { opacity: 1; }
+	}
+
+	.msg.loading i {
+		animation: flash 1s infinite;
+	}
+
+
+    </style>
+</head>
+<body>
+
+	<!-- <button id="dark-mode-toggle">🌙 Dark Mode</button> -->
+
+    <div class="wrapper">
+        <div class="title">Welcome, I am Amirreza's Personal Assistant</div>
+        <div class="box" id="chat-box"></div>
+        <div class="typing-area">
+            <input type="text" id="question-box" placeholder="Type your message...">
+            <button onclick="sendQuestion()">Send</button>
+        </div>
+    </div>
+	
+		<!-- Visit Tracking Script -->
+    <script>
+		window.onload = function() {
+			const chatBox = document.getElementById("chat-box");
+			chatBox.innerHTML += `<div class='item'><div class='icon'><i class='fa fa-robot'></i></div><div class='msg'>How can I assist you with Amirreza's professional background?</div></div>`;
+
+			// Extract tracking tag (t) from URL
+			const urlParams = new URLSearchParams(window.location.search);
+			const tag = urlParams.get("t");
+
+			if (tag) {
+				console.log("Tracking request:", window.location.origin + `/v?t=${encodeURIComponent(tag)}`);
+				fetch(window.location.origin + `/v?t=${encodeURIComponent(tag)}`, { method: "GET" })
+					.then(response => response.json())
+					.then(data => {
+						console.log("Your IP:", data.your_ip);
+					})
+					.catch(error => console.error("Tracking Error:", error));
+			} else {
+				// Fetch `/count` if no tracking tag is found
+				fetch(window.location.origin + "/count")
+					.then(response => response.json())
+					.then(data => {
+						console.log("Your IP:", data.your_ip);
+					})
+					.catch(error => console.error("Error:", error));
+			}
+		};
+	</script>
+
+
+	
+    <script>
+        function sendQuestion() {
+            const userInput = document.getElementById("question-box").value;
+            const chatBox = document.getElementById("chat-box");
+
+            if (!userInput.trim()) return;
+
+            // Add user message
+            chatBox.innerHTML += `<div class='item right'><div class='msg'>${userInput}</div></div>`;
+            document.getElementById("question-box").value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            // Show loading response
+            let messageDiv = document.createElement("div");
+			messageDiv.className = "item";
+			messageDiv.innerHTML = `<div class='icon'><i class='fa fa-robot'></i></div><div class='msg loading'><i>Loading response...</i></div>`;
+			chatBox.appendChild(messageDiv);
+			let msgBox = messageDiv.querySelector(".msg");
+			chatBox.scrollTop = chatBox.scrollHeight;
+
+
+            fetch(window.location.origin + "/chatbot", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ input: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.response) {
+                    msgBox.innerHTML = "";
+                    displayResponseAnimated(data.response, msgBox, 50);
+                } else {
+                    msgBox.innerHTML = `<strong>Error:</strong> No response received.`;
+                }
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => {
+                msgBox.innerHTML = `<strong>Error:</strong> ${error}`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        }
+
+        function displayResponseAnimated(text, element, speed) {
+            const words = text.split(" ");
+            let index = 0;
+            element.innerHTML = "";
+            
+            function addNextWord() {
+                if (index < words.length) {
+                    element.innerHTML += words[index] + " ";
+                    index++;
+                    setTimeout(addNextWord, speed);
+                }
+            }
+            addNextWord();
+        }
+    </script>
+</body>
+</html>
