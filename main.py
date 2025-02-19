@@ -191,12 +191,7 @@ class ChatbotDatabaseManager:
         self.cursor.close()
         self.connection.close()
 
-db_chatbot_manager = ChatbotDatabaseManager(
-    host="localhost",
-    user="chatbot_user",
-    password="FlaskAccessPass15!D",
-    database="chatbot_db"
-)
+db_chatbot_manager = ChatbotDatabaseManager()
 
 app = Flask(__name__)
 # Enable CORS to allow requests from your frontend
@@ -234,12 +229,7 @@ def chatbot():
     
     return jsonify({"response": query_response})
 
-db_visitor_manager = VisitsDatabaseManager(
-    host="localhost",
-    user="chatbot_user",
-    password="FlaskAccessPass15!D",
-    database="website_logs"
-)
+db_visitor_manager = VisitsDatabaseManager()
 
 @app.route("/count", methods=["GET"])
 def count():
