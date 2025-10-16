@@ -1,0 +1,11 @@
+# robots.txt
+# Allow only major search engines to crawl
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: Bingbot
+Disallow:
+
+User-agent: *
+Disallow: /
