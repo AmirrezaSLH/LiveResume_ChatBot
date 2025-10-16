@@ -299,5 +299,16 @@
             addNextWord();
         }
     </script>
+	<script>
+    // Allow pressing Enter to send the message
+	    document.getElementById("question-box").addEventListener("keydown", function(event) {
+	        if (event.key === "Enter") {
+	            event.preventDefault(); 
+	            sendQuestion();
+	        }
+	    });
+	</script>
+
 </body>
 </html>
+
