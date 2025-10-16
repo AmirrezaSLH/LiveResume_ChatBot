@@ -1,5 +1,4 @@
 # robots.txt
-# Allow only major search engines to crawl
 
 User-agent: Googlebot
 Disallow:
@@ -9,3 +8,5 @@ Disallow:
 
 User-agent: *
 Disallow: /
+
+Sitemap: https://chatbot.amirrezaslh.com/
